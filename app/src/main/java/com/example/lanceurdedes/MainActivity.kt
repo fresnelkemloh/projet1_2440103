@@ -127,7 +127,8 @@ fun App(modifier: Modifier = Modifier){
         Spacer(Modifier.height(16.dp))
 
         Button(
-            onClick = { Log.e("But", "lancer de des")}
+            onClick = {
+                Log.e("But", "lancer de des")}
         ) {
             Text("Lancer")
         }
@@ -136,5 +137,5 @@ fun App(modifier: Modifier = Modifier){
 
         Text("Résultats = 4 , 6 , 8")
         Text("Somme = 18")
-    }}
-
+    }
+}
