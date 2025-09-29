@@ -45,25 +45,25 @@ fun App(modifier: Modifier = Modifier){
 
         Text("Selection du nombre de des")
         var selecteurDeDe1 by remember { mutableStateOf(false) }
-        var selecteurDeDe2 by rememberSaveable { mutableStateOf("") }
+        var selecteurDeDe2Save by rememberSaveable { mutableStateOf("") }
 
         Box {
 
             Button(onClick = { selecteurDeDe1 = true }) {
-                Text(selecteurDeDe2)
+                Text(selecteurDeDe2Save)
             }
             DropdownMenu(
                 expanded = selecteurDeDe1,
                 onDismissRequest = { selecteurDeDe1 = false }
             )
             {
-                (1..6).forEach { nb ->
+                (1..6).forEach { nbreDeDe ->
                     DropdownMenuItem(
-                        text = { Text(nb.toString()) },
+                        text = { Text(nbreDeDe.toString()) },
                         onClick = {
-                            selecteurDeDe2 = nb.toString()
+                            selecteurDeDe2Save = nbreDeDe.toString()
                             selecteurDeDe1 = false
-                            Log.d("Nombre", "Nombre de dés choisi $nb")
+                            Log.d("Nombre", "Nombre de dés choisi $nbreDeDe")
                         }
                     )
                 }
@@ -74,11 +74,11 @@ fun App(modifier: Modifier = Modifier){
 
         Text("Selection du nombre de faces :")
         var selecteurDeFace1 by remember { mutableStateOf(false) }
-        var selecteurDeFace2 by rememberSaveable { mutableStateOf("") }
+        var selecteurDeFace2Save by rememberSaveable { mutableStateOf("") }
 
         Box {
             Button(onClick = { selecteurDeFace1 = true }) {
-                Text(selecteurDeFace2)
+                Text(selecteurDeFace2Save)
             }
             DropdownMenu(
                 expanded = selecteurDeFace1,
@@ -88,9 +88,36 @@ fun App(modifier: Modifier = Modifier){
                     DropdownMenuItem(
                         text = { Text(choix) },
                         onClick = {
-                            selecteurDeFace2 = choix
+                            selecteurDeFace2Save = choix
                             selecteurDeFace1 = false
-                            Log.e("Face", "nombre de Faces choisies $choix")
+                            Log.d("Face", "nombre de Faces choisies $choix")
+                        }
+                    )
+                }
+            }
+        }
+
+        Spacer(Modifier.height(16.dp))
+
+        Text("Selection du type de tri :")
+        var selecteurDeTri by remember { mutableStateOf(false) }
+        var selecteurDeFruit2 by rememberSaveable { mutableStateOf("") }
+
+        Box {
+            Button(onClick = { selecteurDeTri = true }) {
+                Text(selecteurDeFruit2)
+            }
+            DropdownMenu(
+                expanded = selecteurDeTri,
+                onDismissRequest = { selecteurDeTri = false }
+            ) {
+                listOf("Aucun", "Croissant", "Décroissant").forEach { choix ->
+                    DropdownMenuItem(
+                        text = { Text(choix) },
+                        onClick = {
+                            selecteurDeFruit2 = choix
+                            selecteurDeTri = false
+                            Log.d("Tri", "Le tri choisie est : $choix")
                         }
                     )
                 }
